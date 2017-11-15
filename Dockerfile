@@ -8,8 +8,8 @@ RUN apk --no-cache add curl tar php5-fpm php5-json php5-iconv php5-opcache php5-
 #RUN php5enmod mcrypt
 
 # add ttrss as the only nginx site
-ADD ttrss.nginx.conf /etc/nginx/conf.d/ttrss
-#RUN rm /etc/nginx/conf.d/default
+ADD ttrss.nginx.conf /etc/nginx/conf.d/ttrss.conf
+RUN rm /etc/nginx/conf.d/default.conf
 
 # fix user
 RUN deluser xfs && delgroup www-data && \
@@ -20,7 +20,7 @@ WORKDIR /var/www
 RUN curl -SL https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar xzC /var/www --strip-components 1 \
     && chown www-data:www-data -R /var/www
 RUN mv /var/www /www-start && mkdir -p /var/www && \
-    mkdir /run/nginx && touch /run/nginx/nginx.pid && rm /etc/nginx/conf.d/default.conf && \
+    mkdir /run/nginx && touch /run/nginx/nginx.pid && \
     auser=www-data && \
     sed -i -e "/^user .*/cuser  $auser;" /etc/nginx/nginx.conf && \
     sed -i -e "/^#user .*/cuser  $auser;" /etc/nginx/nginx.conf
