@@ -37,4 +37,6 @@ ENV DB_PASS ttrss
 ADD setup.sh /
 RUN chmod +x /setup.sh
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+VOLUME ["/var/www"]
 CMD sh /setup.sh && supervisord -c /etc/supervisor/conf.d/supervisord.conf
