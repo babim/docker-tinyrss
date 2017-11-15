@@ -1,5 +1,9 @@
 #!/usr/bin/with-contenv sh
 
+if [ -z "`ls /etc/php`" ]; then 
+	cp -R /www-start/* /var/www
+fi
+    
 if [ ! -e /opt/ttrss/config.php ];  then
     cat > /opt/ttrss/config.php <<EOF
 <?php
