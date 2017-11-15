@@ -1,6 +1,6 @@
 FROM babim/alpinebase
 
-RUN apk --no-cache add curl tar php5-fpm php5-json php5-iconv php5-pgsql php5-dom php5-curl php5-mcrypt openssl supervisor nginx
+RUN apk --no-cache add curl tar php5-fpm php5-json php5-iconv php5-pgsql php5-pdo php5-dom php5-curl php5-mcrypt openssl supervisor nginx
 
 # enable the mcrypt module
 #RUN php5enmod mcrypt
