@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv sh
 
 if [ -z "`ls /etc/php`" ]; then 
-	cp -R /www-start/* /var/www && chown -R www-data:www-data /var/www
+	cp -R /www-start/* /var/www && chown -R www-data:www-data /var/www && chmod -R 755 /var/www
 fi
     
 if [ ! -e /var/www/config.php ];  then
