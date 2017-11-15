@@ -4,8 +4,8 @@ if [ -z "`ls /etc/php`" ]; then
 	cp -R /www-start/* /var/www
 fi
     
-if [ ! -e /opt/ttrss/config.php ];  then
-    cat > /opt/ttrss/config.php <<EOF
+if [ ! -e /var/www/config.php ];  then
+    cat > /var/www/config.php <<EOF
 <?php
 // See config.php-dist for an example config file
 define('DB_TYPE', '${DB_TYPE}');
