@@ -7,8 +7,6 @@ or using one of the available apps.
 
 ## About Tiny Tiny RSS
 
-> *From [the official readme](http://tt-rss.org/redmine/projects/tt-rss/wiki):*
-
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator,
 designed to allow you to read news from any location,
 while feeling as close to a real desktop application as possible.
@@ -23,14 +21,13 @@ steps in more detail. So let's start.
 Just start up a new database container:
 
 ```bash
-$ docker run -d --name ttrssdb nornagon/postgres
+$ docker run -d --name ttrssdb babim/postgresql
 ```
 
-And because this docker image is available as a [trusted build on the docker index](https://index.docker.io/u/clue/ttrss/),
-using it is as simple as launching this Tiny Tiny RSS installation linked to your fresh database:
+launching this Tiny Tiny RSS installation linked to your fresh database:
 
 ```bash
-$ docker run -d --link ttrssdb:db -p 80:80 clue/ttrss
+$ docker run -d --link ttrssdb:db -p 80:80 babim/ttrss
 ```
 
 Running this command for the first time will download the image automatically.
@@ -74,7 +71,7 @@ its database port (5432) to the outside.
 Example with nornagon/postgres:
 
 ```bash
-$ docker run -d --name=tinydatabase nornagon/postgres:latest
+$ docker run -d --name=tinydatabase babim/postgresql:latest
 ```
 
 > The image nornagon/postgres exposes a database superuser that this image uses
@@ -171,7 +168,7 @@ This is particular useful for your initial database setup, as errors get reporte
 the console and further execution will halt.
 
 ```bash
-$ docker run -it --link tinydatabase:db -p 80:80 clue/ttrss
+$ docker run -it --link tinydatabase:db -p 80:80 babim/ttrss
 ```
 
 ### Running ttrss daemonized
@@ -182,5 +179,5 @@ Remaining arguments can be passed just like before, the following is the recomme
 minimum:
 
 ```bash
-$ docker run -d --link tinydatabase:db -p 80:80 clue/ttrss
+$ docker run -d --link tinydatabase:db -p 80:80 babim/ttrss
 ```
