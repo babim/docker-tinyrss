@@ -19,7 +19,8 @@ RUN deluser xfs && delgroup www-data && \
 WORKDIR /var/www
 RUN curl -SL https://git.tt-rss.org/git/tt-rss/archive/master.tar.gz | tar xzC /var/www --strip-components 1 \
     && chown www-data:www-data -R /var/www
-RUN cp config.php-dist config.php && mv /var/www /www-start && mkdir -p /var/www
+RUN cp config.php-dist config.php && mv /var/www /www-start && mkdir -p /var/www && \
+    mkdir /run/nginx && touch /run/nginx/nginx.pid
 
 # expose only nginx HTTP port
 EXPOSE 80
