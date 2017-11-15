@@ -29,6 +29,8 @@ ENV SELF_URL_PATH http://localhost
 
 # expose default database credentials via ENV in order to ease overwriting
 ENV DB_HOST db
+ENV DB_TYPE pgsql
+ENV DB_PORT 5432
 ENV DB_NAME ttrss
 ENV DB_USER ttrss
 ENV DB_PASS ttrss
