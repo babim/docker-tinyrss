@@ -2,7 +2,7 @@ FROM babim/alpinebase
 
 RUN apk --no-cache add curl tar php5-fpm php5-json php5-iconv php5-opcache php5-sqlite3 php5-pgsql php5-pdo php5-mysql \
     php5-mysqli php5-dom php5-gd php5-curl php5-mcrypt php5-pdo_dblib php5-pdo_sqlite php5-pdo_pgsql php5-pdo_mysql \
-    php5-xml php5-xmlrpc php5-imap openssl supervisor nginx
+    php5-xml php5-xmlrpc php5-imap openssl supervisor nginx sphinx
 
 # enable the mcrypt module
 #RUN php5enmod mcrypt
@@ -34,6 +34,7 @@ ENV DB_USER ttrss
 ENV DB_PASS ttrss
 
 # always re-configure database with current ENV when RUNning container, then monitor all services
-ADD configure-db.php /configure-db.php
+ADD setup.sh /
+RUN chmod +x /setup.sh
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-CMD php /configure-db.php && supervisord -c /etc/supervisor/conf.d/supervisord.conf
+CMD sh /setup.sh && supervisord -c /etc/supervisor/conf.d/supervisord.conf
