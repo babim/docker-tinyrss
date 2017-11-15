@@ -1,4 +1,5 @@
 # docker-ttrss
+thanks clue
 
 This [Docker](https://www.docker.com) image allows you to run the [Tiny Tiny RSS](http://tt-rss.org) feed reader.
 Keep your feed history to yourself and access your RSS and atom feeds from everywhere.
