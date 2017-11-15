@@ -28,6 +28,7 @@ EXPOSE 80
 ENV SELF_URL_PATH http://localhost
 
 # expose default database credentials via ENV in order to ease overwriting
+ENV DB_HOST db
 ENV DB_NAME ttrss
 ENV DB_USER ttrss
 ENV DB_PASS ttrss
